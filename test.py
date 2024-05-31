@@ -77,9 +77,10 @@ def evaluate(respth='./res/test_res', dspth='./data', cp='model_final_diss.pth')
                 out = net(img)[0]
                 parsing = out.squeeze(0).cpu().numpy().argmax(0)
                 # print(parsing)
-                print(np.unique(parsing))
 
-                vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=osp.join(respth, image_path))
+                save_path = osp.join(respth, image_path)
+                vis_parsing_maps(image, parsing, stride=1, save_im=True, save_path=save_path)
+                print(save_path, np.unique(parsing))
 
 
 
@@ -88,6 +89,6 @@ def evaluate(respth='./res/test_res', dspth='./data', cp='model_final_diss.pth')
 
 
 if __name__ == "__main__":
-    evaluate(dspth='/home/joonp/1_Projects/image-to-avatar/data/deep3d/ffhq/train/images', cp='79999_iter.pth')
+    evaluate(dspth='/home/joonp/1_Projects/Data/image-to-avatar/deep3d/ffhq/train/images', cp='79999_iter.pth')
 
 
